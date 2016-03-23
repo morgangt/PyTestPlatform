@@ -1,0 +1,31 @@
+{% extends 'main_admin.html' %}
+
+{% load staticfiles %}
+{% block content %}
+
+<div class="jumbotron">
+  <h1>{{ questions.title }}</h1>
+  <p>{{ questions.text }}</p>
+</div>
+
+<div class="list-group">
+<form method="GET" action="/test/id{{ test.id }}/step{{ next_step }}/" onsubmit="checkParams()">
+{% for vari in variant %}
+
+<div class="input-group">
+      <span class="input-group-addon">
+        <input id="variant" name="variant" value="{{ vari.id }}" type={{ type }}>
+          {{ vari.title }}
+      </span>
+</div>
+
+{% endfor %}
+<input type="submit" id='submit' value="Следующий">
+</form>
+
+<script>
+</script>
+
+
+</div>
+{% endblock %}

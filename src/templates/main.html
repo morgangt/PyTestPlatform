@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+{% load staticfiles %}
+
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="/">Home</a></li>
+            {% if user.is_authenticated %}
+            <li role="presentation"><a>{{ user.username }}</a></li>
+            <li role="presentation"><a href="/tests/">List test</a></li>
+            <li role="presentation"><a href="/logout/">Logout</a></li>
+            {% else %}
+            <li role="presentation"><a href="/login/">Login</a></li>
+            <li role="presentation"><a href="/register/">Register</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+        <h3 class="text-muted">Testing platform</h3>
+      </div>
+
+{% if error_msg %}
+<div class="alert alert-danger" role="alert">{{ error_msg }}</div>
+{% endif %}
+
+{% block content %}{% endblock %}
+
+
+      <footer class="footer">
+        <p>&copy; 2016 Open Source, <a href="https://twitter.com/aliksei">@morgangso</a></p>
+      </footer>
+
+    </div> <!-- /container -->
+</body>
+</html>

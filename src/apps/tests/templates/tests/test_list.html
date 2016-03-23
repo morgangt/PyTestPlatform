@@ -1,0 +1,19 @@
+{% extends 'main_admin.html' %}
+
+{% load staticfiles %}
+{% block content %}
+<link rel="stylesheet" href="{% static "css/signin.css" %}"/>
+
+<div class="list-group">
+
+<h3>Список тестов</h3>
+    {% for test in list_test %}
+
+        <a href="/test/id{{ test.id }}/"><button type="button" class="list-group-item">{{ test.name }}
+            </br> <i>{{ test.description }}</i>
+            </br> <b>Количество вопросов: {{ test.sum }}</b></button></a>
+
+    {% endfor %}
+</div>
+
+{% endblock %}
