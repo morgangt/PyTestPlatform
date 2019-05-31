@@ -19,3 +19,7 @@ class UsersTests(models.Model):
 class AnswerQuestions(models.Model):
     test = models.ForeignKey(UsersTests)
     variant = models.ForeignKey(Variant)
+
+    class Meta:
+        verbose_name = 'Ответ пользователя'
+        verbose_name_plural = 'Ответы пользователя'
